@@ -9,6 +9,6 @@ namespace Service.Interface
         void Add(Student student);
         void Delete(Guid id);
         Data.Entities.Student Get(Guid id);
-         IList<Student> FindAll(string name);
+         IList<Student> FindAll(Func<Student,bool>func);
     }
 }

@@ -12,12 +12,7 @@ namespace Service
     {
         [Dependency]
         public IStudentRepository StudentRepository { get; set; }
-
-        public IList<Student> FindAll(string name)
-        {
-            return StudentRepository.FindAll(c => c.Name.Contains(name)).ToList();
-        }
-
+        
         public Student Get(Guid id)
         {
             return StudentRepository.Get(id);
@@ -31,6 +26,12 @@ namespace Service
         public void Add(Student student)
         {
             StudentRepository.Add(student);
+        }
+
+        public IList<Student> FindAll(Func<Student, bool> func)
+        {
+            if (func == null) return StudentRepository.FindAll(c => true).ToList();
+            return StudentRepository.FindAll(func).ToList();
         }
     }
 }

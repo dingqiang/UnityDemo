@@ -10,6 +10,9 @@ using Service.Interface;
 
 namespace Web.Controllers
 {
+    /// <summary>
+    /// 学生控制器
+    /// </summary>
     public class StudentController : Controller
     {
         [Dependency]
@@ -18,7 +21,7 @@ namespace Web.Controllers
 
         public ActionResult Index()
         {
-            var list = StudentService.FindAll("");
+            var list = StudentService.FindAll(null);
 
             for (int i = 0; i < 10; i++)
             {
